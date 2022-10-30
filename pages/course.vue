@@ -1,7 +1,5 @@
 <template>
-  <div
-      class="p-12 bg-gray-100 w-full h-full min-h-screen flex flex-col items-center"
-  >
+  <div>
     <div class="prose mb-12">
       <h1>
         <span class="font-medium">
@@ -28,9 +26,11 @@
               class="flex flex-row space-x-1 no-underline prose-sm font-normal py-1 px-4 -mx-4"
               :to="lesson.path"
               :class="{
-                'text-blue-500': lesson.path === $route.fullPath,
-                'text-gray-600': lesson.path !== $route.fullPath,
-              }"
+              'text-blue-500':
+                lesson.path === $route.fullPath,
+              'text-gray-600':
+                lesson.path !== $route.fullPath,
+            }"
           >
             <span class="text-gray-500"
             >{{ index + 1 }}.</span
@@ -48,5 +48,5 @@
 </template>
 
 <script lang="ts" setup>
-  const { chapters } = useCourse();
+const { chapters } = useCourse();
 </script>
