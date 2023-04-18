@@ -12,7 +12,7 @@ export default {
           number: 1,
           downloadUrl:
             "https://vueschool.io/lessons/introduction-to-typescript-with-vue-js-3",
-          videoId: 684236333,
+          videoId: "684236333",
           text: `In this lesson, we take a look at some of the benefits of using TypeScript with Vue.js including:
 
 Improved error detection in your IDE and at build time
@@ -27,7 +27,7 @@ We also answer the question: “Are there any cases when you wouldn’t want to 
           number: 2,
           downloadUrl:
             "https://vueschool.io/lessons/typescript-in-vue-components",
-          videoId: 684012498,
+          videoId: "684012498",
           text: `In this lesson, we learn how to direct Vue Single File Components to work with typescript.`,
         },
         {
@@ -36,7 +36,7 @@ We also answer the question: “Are there any cases when you wouldn’t want to 
           number: 3,
           downloadUrl: "https://vueschool.io/lessons/typing-component-events",
           sourceUrl: "https://vueschool.io/lessons/typing-component-events",
-          videoId: 686921522,
+          videoId: "686921522",
           text: `In this lesson, we learn how to type the payload of component events in Vue and TypeScript.`,
         },
       ],
@@ -54,7 +54,7 @@ We also answer the question: “Are there any cases when you wouldn’t want to 
             "https://vueschool.io/lessons/using-typescript-with-the-options-api-in-components",
           sourceUrl:
             "https://vueschool.io/lessons/using-typescript-with-the-options-api-in-components",
-          videoId: 688503389,
+          videoId: "688503389",
           text: `In this lesson, we learn how to use TypeScript with the Vue.js Options API to type things such as component props, computed props, and events.`,
         },
         {
@@ -65,7 +65,7 @@ We also answer the question: “Are there any cases when you wouldn’t want to 
             "https://vueschool.io/lessons/declaring-and-typing-component-props",
           sourceUrl:
             "https://vueschool.io/lessons/declaring-and-typing-component-props",
-          videoId: 688500728,
+          videoId: "688500728",
           text: `In this lesson, we’ll examine how to use TypeScript to define types for Vue component props. Along the way, you’ll also get a first hand look at the great DX this provides for interacting with those components.`,
         },
         {
@@ -74,7 +74,7 @@ We also answer the question: “Are there any cases when you wouldn’t want to 
           number: 3,
           downloadUrl:
             "https://vueschool.io/lessons/typescript-in-vue-components",
-          videoId: 684012498,
+          videoId: "684012498",
           text: `In this lesson, we learn how to direct Vue Single File Components to work with typescript.`,
         },
         {
@@ -83,7 +83,7 @@ We also answer the question: “Are there any cases when you wouldn’t want to 
           number: 4,
           downloadUrl: "https://vueschool.io/lessons/typing-component-events",
           sourceUrl: "https://vueschool.io/lessons/typing-component-events",
-          videoId: 686921522,
+          videoId: "686921522",
           text: `In this lesson, we learn how to type the payload of component events in Vue and TypeScript.`,
         },
       ],
@@ -101,7 +101,7 @@ We also answer the question: “Are there any cases when you wouldn’t want to 
             "https://vueschool.io/lessons/using-typescript-with-the-options-api-in-components",
           sourceUrl:
             "https://vueschool.io/lessons/using-typescript-with-the-options-api-in-components",
-          videoId: 688503389,
+          videoId: "688503389",
           text: `In this lesson, we learn how to use TypeScript with the Vue.js Options API to type things such as component props, computed props, and events.`,
         },
         {
@@ -112,7 +112,7 @@ We also answer the question: “Are there any cases when you wouldn’t want to 
             "https://vueschool.io/lessons/declaring-and-typing-component-props",
           sourceUrl:
             "https://vueschool.io/lessons/declaring-and-typing-component-props",
-          videoId: 688500728,
+          videoId: "688500728",
           text: `In this lesson, we’ll examine how to use TypeScript to define types for Vue component props. Along the way, you’ll also get a first hand look at the great DX this provides for interacting with those components.`,
         },
         {
@@ -121,7 +121,7 @@ We also answer the question: “Are there any cases when you wouldn’t want to 
           number: 3,
           downloadUrl:
             "https://vueschool.io/lessons/typescript-in-vue-components",
-          videoId: 684012498,
+          videoId: "684012498",
           text: `In this lesson, we learn how to direct Vue Single File Components to work with typescript.`,
         },
         {
@@ -130,7 +130,7 @@ We also answer the question: “Are there any cases when you wouldn’t want to 
           number: 4,
           downloadUrl: "https://vueschool.io/lessons/typing-component-events",
           sourceUrl: "https://vueschool.io/lessons/typing-component-events",
-          videoId: 686921522,
+          videoId: "686921522",
           text: `In this lesson, we learn how to type the payload of component events in Vue and TypeScript.`,
         },
       ],
