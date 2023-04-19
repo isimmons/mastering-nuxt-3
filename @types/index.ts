@@ -13,6 +13,7 @@ export type Chapter = {
 export type Lesson = {
   title: string;
   slug: string;
+  path: string;
   number: number;
   downloadUrl: string;
   videoId: string;
