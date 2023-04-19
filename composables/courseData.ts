@@ -7,6 +7,14 @@ export default {
       number: 1,
       lessons: [
         {
+          title: "Big Buck Bunny",
+          slug: "big-buck-bunny",
+          number: 0,
+          downloadUrl: "https://vimeo.com/1084537",
+          videoId: "1084537",
+          text: `Big Buck Bunny tells the story of a giant rabbit with a heart bigger than himself. When one sunny day three rodents rudely harass him, something snaps... and the rabbit ain't no bunny anymore! In the typical cartoon tradition he prepares the nasty rodents a comical revenge.`,
+        },
+        {
           title: "Introduction to TypeScript with Vue.js 3",
           slug: "1-introduction-to-typescript-with-vue-js-3",
           number: 1,
