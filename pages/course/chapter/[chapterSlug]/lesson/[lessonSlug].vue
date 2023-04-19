@@ -13,6 +13,14 @@ const lesson = computed(() => {
     (lesson) => lesson.slug === route.params.lessonSlug
   );
 });
+
+const pageTitle = computed(() => {
+  return `${lesson.value?.title} - ${course.title}` || "Mastering Nuxt";
+});
+
+useHead({
+  title: pageTitle,
+});
 </script>
 
 <template>
