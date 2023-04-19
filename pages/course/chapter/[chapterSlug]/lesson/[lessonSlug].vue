@@ -22,9 +22,7 @@ useHead({
   title: pageTitle,
 });
 
-const progress = useState<boolean[][]>("progress", () => {
-  return [];
-});
+const progress = useLocalStorage<boolean[][]>("progress", []);
 
 const isLessonComplete = computed(() => {
   if (chapter.value && lesson.value) {
