@@ -1,5 +1,7 @@
 import courseData from "./courseData";
 
-export const useCourse = () => {
+import type { Course } from "~/@types";
+
+export const useCourse = (): Course => {
   return courseData;
 };
