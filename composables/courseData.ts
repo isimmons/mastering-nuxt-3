@@ -9,7 +9,7 @@ export default {
         {
           title: "Big Buck Bunny",
           slug: "big-buck-bunny",
-          number: 0,
+          number: 1,
           downloadUrl: "https://vimeo.com/1084537",
           videoId: "1084537",
           text: `Big Buck Bunny tells the story of a giant rabbit with a heart bigger than himself. When one sunny day three rodents rudely harass him, something snaps... and the rabbit ain't no bunny anymore! In the typical cartoon tradition he prepares the nasty rodents a comical revenge.`,
@@ -17,7 +17,7 @@ export default {
         {
           title: "Introduction to TypeScript with Vue.js 3",
           slug: "1-introduction-to-typescript-with-vue-js-3",
-          number: 1,
+          number: 2,
           downloadUrl:
             "https://vueschool.io/lessons/introduction-to-typescript-with-vue-js-3",
           videoId: "684236333",
@@ -32,7 +32,7 @@ We also answer the question: “Are there any cases when you wouldn’t want to 
         {
           title: "TypeScript in Vue Components",
           slug: "2-typescript-in-vue-components",
-          number: 2,
+          number: 3,
           downloadUrl:
             "https://vueschool.io/lessons/typescript-in-vue-components",
           videoId: "684012498",
@@ -41,7 +41,7 @@ We also answer the question: “Are there any cases when you wouldn’t want to 
         {
           title: "Typing Component Events",
           slug: "3-typing-component-events",
-          number: 3,
+          number: 4,
           downloadUrl: "https://vueschool.io/lessons/typing-component-events",
           sourceUrl: "https://vueschool.io/lessons/typing-component-events",
           videoId: "686921522",
