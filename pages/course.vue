@@ -19,14 +19,15 @@ const resetError = async (error: Ref<Error | null>) => {
 
 <template>
   <div>
-    <div class="prose mb-12 text-center max-w-full">
-      <NuxtLink to="/course" class="no-underline">
-        <h1 class="w-full">
+    <div class="mb-4 flex justify-between items-center w-full">
+      <h1 class="text-3xl">
+        <NuxtLink to="/course" class="no-underline">
           <span class="font-medium">
             <span class="font-bold">{{ title }}</span>
           </span>
-        </h1>
-      </NuxtLink>
+        </NuxtLink>
+      </h1>
+      <UserCard />
     </div>
 
     <div class="flex flex-row justify-center flex-grow">
