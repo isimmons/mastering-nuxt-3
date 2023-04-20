@@ -1,5 +1,9 @@
+<script setup lang="ts">
+const { firstLesson } = useCourse();
+</script>
+
 <template>
-  <div class="bg-slate-100">
-    <h1 class="text-3xl font-bold">Hello Nuxi!</h1>
-  </div>
+  <NuxtLink :to="firstLesson.path" class="underline font-medium">
+    Get started with your first lesson
+  </NuxtLink>
 </template>
