@@ -43,8 +43,8 @@ const resetError = async (error: Ref<Error | null>) => {
             class="flex flex-row space-x-1 no-underline prose-sm font-normal py-1 px-4 -mx-4"
             :to="lesson.path"
             :class="{
-              'text-blue-500': isActiveLink(lesson.path),
-              'text-gray-600': !isActiveLink(lesson.path),
+              'text-blue-500': isActiveLink(lesson.path || ''),
+              'text-gray-600': !isActiveLink(lesson.path || ''),
             }"
           >
             <span class="text-gray-500">{{ index + 1 }}.</span>
