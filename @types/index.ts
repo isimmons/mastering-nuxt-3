@@ -1,7 +1,6 @@
 export type Course = {
   title: string;
   chapters: Chapter[];
-  firstLesson: Lesson;
 };
 
 export type Chapter = {

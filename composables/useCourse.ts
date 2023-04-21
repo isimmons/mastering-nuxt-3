@@ -3,8 +3,8 @@ import courseData from "./courseData";
 import type { Course, Chapter, Lesson } from "~/@types";
 
 export const useCourse = (): Course => {
-  const chapters: Chapter[] = courseData.chapters.map((chapter) => {
-    const lessons: Lesson[] = chapter.lessons.map((lesson) => ({
+  const chapters: Chapter[] = courseData.chapters.map((chapter: Chapter) => {
+    const lessons: Lesson[] = chapter.lessons.map((lesson: Lesson) => ({
       ...lesson,
       path: `/course/chapter/${chapter.slug}/lesson/${lesson.slug}`,
     }));
@@ -14,7 +14,7 @@ export const useCourse = (): Course => {
     };
   });
 
-  const firstLesson = chapters[0].lessons[0];
+  const firstLesson: Lesson = chapters[0].lessons[0];
 
-  return { ...courseData, chapters, firstLesson };
+  return { ...courseData, chapters };
 };
