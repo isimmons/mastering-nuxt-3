@@ -1,22 +1,5 @@
-export type Course = {
-  title: string;
-  chapters: Chapter[];
-};
+// full course data
+export type { Course, Chapter, Lesson } from "./course";
 
-export type Chapter = {
-  title: string;
-  slug: string;
-  number: number;
-  lessons: Lesson[];
-};
-
-export type Lesson = {
-  title: string;
-  slug: string;
-  path?: string;
-  number: number;
-  downloadUrl: string;
-  videoId: string;
-  text: string;
-  sourceUrl?: string;
-};
+// course meta data
+export type { CourseMeta, ChapterMeta, LessonMeta } from "./course-meta";
