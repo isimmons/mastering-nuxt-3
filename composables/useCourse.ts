@@ -14,7 +14,5 @@ export const useCourse = (): Course => {
     };
   });
 
-  const firstLesson: Lesson = chapters[0].lessons[0];
-
   return { ...courseData, chapters };
 };
