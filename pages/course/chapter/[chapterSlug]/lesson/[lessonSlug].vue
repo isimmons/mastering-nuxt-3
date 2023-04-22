@@ -1,6 +1,14 @@
 <script setup lang="ts">
+import useLesson from "~/composables/useLesson";
+
+import { assertIsTypeString } from "~/utils";
+
 const course = useCourse();
 const route = useRoute();
+const { chapterSlug, lessonSlug } = route.params;
+assertIsTypeString(chapterSlug);
+assertIsTypeString(lessonSlug);
+const lesson = await useLesson(chapterSlug, lessonSlug);
 
 definePageMeta({
   middleware: [
@@ -42,12 +50,6 @@ definePageMeta({
 const chapter = computed(() => {
   return course.chapters.find(
     (chapter) => chapter.slug === route.params.chapterSlug
-  );
-});
-
-const lesson = computed(() => {
-  return chapter.value?.lessons.find(
-    (lesson) => lesson.slug === route.params.lessonSlug
   );
 });
 
