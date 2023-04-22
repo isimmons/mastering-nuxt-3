@@ -1,24 +1,27 @@
 <script setup lang="ts">
-type AppError = {
+// Still working on getting exact type correct
+// based on what actually gets passed through.
+interface AppError  {
+  url?: string; 
+  statusCode: number; 
+  statusMessage?: string;
+  message: string; 
+  description?: string; 
+  data?: any; 
   fatal: boolean;
-  url?: string;
-  statusCode: number;
-  statusMessage: string;
-  message: string;
-  description: string;
-  data?: any;
-  stack: string;
+  cause?: string; 
+  name: string; 
+  stack: string; 
 };
 
-// narrows error.value to intersection of AppError & Error but not null or undefined
-function isAppError(arg: unknown): arg is AppError {
+function isAppError(arg: unknown): arg is AppError{
   return  !!arg &&
   typeof arg === "object";   
 }
 
 const error = useError();
 if (!isAppError(error.value)) throw new Error("Unknown error type or error is undefined");
-const { fatal, url, statusCode, statusMessage, message, description, data, stack } = error.value;
+const {url, statusCode, statusMessage, message, description, data, fatal, cause, name, stack } = error.value;
 
 const handleError = () => {
   clearError({ redirect: "/course" });
@@ -29,15 +32,17 @@ const handleError = () => {
   <NuxtLayout>
     <div class="prose text-center max-w-full">
       <h1 v-if="fatal">Fatal Error</h1>
-      <h2>{{ statusCode }} - {{ statusMessage }}</h2>
-      
-      <h2>{{ message }}</h2>
-      <p v-if="url"><strong>URL: </strong> {{ url }}</p>
+      <h2 v-if="name">Name: {{ name }}</h2>
+      <h2 v-if="statusCode">{{ statusCode }}</h2>
+      <h2 v-if="statusMessage">{{ statusMessage }}</h2>
+      <p v-if="cause">Reason: {{  cause }}</p>
+      <p v-if="message">msssage: {{ message }}</p>
+      <p v-if="url">URL: {{ url }}</p>
+      <p v-if="description">description: {{ description }}</p>
+      <p v-if="data">data: {{ data }}</p>
       <p v-if="stack" class="text-left">
         <pre>{{ stack }}</pre>
       </p>
-      <p v-if="description">{{ description }}</p>
-      <p v-if="data">data: {{ data }}</p>
       <div class="prose text-center max-w-full">
         <p>
           Go to
