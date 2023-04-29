@@ -110,7 +110,7 @@ const toggleComplete = () => {
     </div>
     <VideoPlayer
       v-if="lesson.videoId"
-      :videoId="lesson.videoId"
+      :videoId="lesson.videoId.toString()"
       class="w-full"
     />
     <p>{{ lesson.text }}</p>

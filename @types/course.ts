@@ -16,7 +16,7 @@ export type Lesson = {
   path?: string;
   number: number;
   downloadUrl: string;
-  videoId: string;
+  videoId: number;
   text: string;
   sourceUrl?: string;
 };
