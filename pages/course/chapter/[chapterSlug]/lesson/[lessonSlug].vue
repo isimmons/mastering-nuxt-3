@@ -3,7 +3,7 @@ import useLesson from "~/composables/useLesson";
 
 import { assertIsTypeString } from "~/utils";
 
-const course = useCourse();
+const course = await useCourse();
 const route = useRoute();
 const { chapterSlug, lessonSlug } = route.params;
 assertIsTypeString(chapterSlug);
@@ -12,10 +12,10 @@ const lesson = await useLesson(chapterSlug, lessonSlug);
 
 definePageMeta({
   middleware: [
-    function ({ params }, from) {
-      const course = useCourse();
+    async function ({ params }, from) {
+      const course = await useCourse();
 
-      const chapter = course.chapters.find(
+      const chapter = course.value.chapters.find(
         (chapter) => chapter.slug === params.chapterSlug
       );
 
@@ -48,13 +48,13 @@ definePageMeta({
 });
 
 const chapter = computed(() => {
-  return course.chapters.find(
+  return course.value.chapters.find(
     (chapter) => chapter.slug === route.params.chapterSlug
   );
 });
 
 const pageTitle = computed(() => {
-  return `${lesson.value?.title} - ${course.title}` || "Mastering Nuxt";
+  return `${lesson.value?.title} - ${course.value.title}` || "Mastering Nuxt";
 });
 
 useHead({
