@@ -4,5 +4,6 @@ export default defineNuxtRouteMiddleware(({ params, path }, from) => {
   if (user.value || params.chapterSlug === "1-chapter-1") {
     return;
   }
+
   return navigateTo(`/login?redirectTo=${path}`);
 });
