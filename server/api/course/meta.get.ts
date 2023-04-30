@@ -29,6 +29,6 @@ const courseSelect = Prisma.validator<Prisma.CourseArgs>()({
 });
 export type CourseOutline = Prisma.CourseGetPayload<typeof courseSelect>;
 
-export default defineEventHandler(() => {
-  return prisma.course.findFirst(courseSelect);
+export default defineEventHandler(async () => {
+  return await prisma.course.findFirst(courseSelect);
 });
