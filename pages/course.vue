@@ -5,6 +5,11 @@ const route = useRoute();
 const showSplash = computed<boolean>(() => {
   return route.path === "/course";
 });
+
+const lessonPath = (chapterSlug: string, lessonSlug: string) => {
+  return `/course/chapter/${chapterSlug}/lesson/${lessonSlug}`;
+};
+
 const isActiveLink = (lessonPath: string): boolean => {
   return lessonPath === route.fullPath;
 };
@@ -41,10 +46,14 @@ const resetError = async (error: Ref<Error | null>) => {
             v-for="(lesson, index) in chapter.lessons"
             :key="lesson.slug"
             class="flex flex-row space-x-1 no-underline prose-sm font-normal py-1 px-4 -mx-4"
-            :to="lesson.path"
+            :to="lessonPath(chapter.slug, lesson.slug)"
             :class="{
-              'text-blue-500': isActiveLink(lesson.path || ''),
-              'text-gray-600': !isActiveLink(lesson.path || ''),
+              'text-blue-500': isActiveLink(
+                lessonPath(chapter.slug, lesson.slug)
+              ),
+              'text-gray-600': !isActiveLink(
+                lessonPath(chapter.slug, lesson.slug)
+              ),
             }"
           >
             <span class="text-gray-500">{{ index + 1 }}.</span>
