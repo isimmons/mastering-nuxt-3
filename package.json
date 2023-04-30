@@ -16,7 +16,12 @@
     "@vueuse/core": "^10.0.2",
     "@vueuse/nuxt": "^10.0.2",
     "nuxt": "^3.4.1",
+    "prisma": "^4.13.0",
+    "prisma-client": "^0.0.0",
     "typescript": "^5.0.4",
     "vue-tsc": "^1.2.0"
+  },
+  "dependencies": {
+    "@prisma/client": "^4.13.0"
   }
 }
