@@ -1,13 +1,12 @@
 <script setup lang="ts">
 import useLesson from "~/composables/useLesson";
 
-import { assertIsTypeString } from "~/utils";
+import { assertIsSlugObject } from "~/utils";
 
 const course = await useCourse();
 const route = useRoute();
+assertIsSlugObject(route.params);
 const { chapterSlug, lessonSlug } = route.params;
-assertIsTypeString(chapterSlug);
-assertIsTypeString(lessonSlug);
 const lesson = await useLesson(chapterSlug, lessonSlug);
 
 definePageMeta({
