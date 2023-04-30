@@ -1,3 +1,5 @@
+import type { Lesson as PrismaLesson } from "@prisma/client";
+
 export type Course = {
   title: string;
   chapters: Chapter[];
@@ -10,13 +12,6 @@ export type Chapter = {
   lessons: Lesson[];
 };
 
-export type Lesson = {
-  title: string;
-  slug: string;
+export type Lesson = PrismaLesson & {
   path?: string;
-  number: number;
-  downloadUrl: string;
-  videoId: number;
-  text: string;
-  sourceUrl?: string;
 };
