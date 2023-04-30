@@ -18,7 +18,7 @@
     "@types/node": "^18.15.11",
     "@vueuse/core": "^10.0.2",
     "@vueuse/nuxt": "^10.0.2",
-    "nuxt": "^3.4.1",
+    "nuxt": "^3.4.3",
     "prisma": "^4.13.0",
     "prisma-client": "^0.0.0",
     "ts-node": "^10.9.1",
