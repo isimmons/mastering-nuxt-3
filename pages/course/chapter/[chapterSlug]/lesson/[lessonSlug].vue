@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import useLesson from "~/composables/useLesson";
 
-import { useCourseProgress } from "~/stores/courseProgress";
+import { courseProgress } from "~/stores/courseProgress";
 
 import { assertIsSlugObject } from "~/utils";
 
@@ -12,7 +12,7 @@ assertIsSlugObject(route.params);
 const { chapterSlug, lessonSlug } = route.params;
 const lesson = await useLesson(chapterSlug, lessonSlug);
 
-const store = useCourseProgress();
+const store = courseProgress();
 const { initialize, toggleComplete } = store;
 
 if (user.value) {

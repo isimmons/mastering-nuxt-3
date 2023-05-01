@@ -2,7 +2,7 @@ import { defineStore } from "pinia";
 
 import type { CourseProgress } from "~/@types";
 
-export const useCourseProgress = defineStore("courseProgress", () => {
+export const courseProgress = defineStore("courseProgress", () => {
   const progress = ref<CourseProgress>({});
 
   const initialized = ref<boolean>(false);
