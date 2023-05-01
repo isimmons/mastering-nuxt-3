@@ -46,14 +46,10 @@ const resetError = async (error: Ref<Error | null>) => {
             v-for="(lesson, index) in chapter.lessons"
             :key="lesson.slug"
             class="flex flex-row space-x-1 no-underline prose-sm font-normal py-1 px-4 -mx-4"
-            :to="lessonPath(chapter.slug, lesson.slug)"
+            :to="lesson.path"
             :class="{
-              'text-blue-500': isActiveLink(
-                lessonPath(chapter.slug, lesson.slug)
-              ),
-              'text-gray-600': !isActiveLink(
-                lessonPath(chapter.slug, lesson.slug)
-              ),
+              'text-blue-500': isActiveLink(lesson.path),
+              'text-gray-600': !isActiveLink(lesson.path),
             }"
           >
             <span class="text-gray-500">{{ index + 1 }}.</span>
