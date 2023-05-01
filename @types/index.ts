@@ -1,3 +1,3 @@
 // full course data
 
-export type { Lesson } from "./course";
+export type { Lesson, CourseProgress, ChapterProgress } from "./course";
