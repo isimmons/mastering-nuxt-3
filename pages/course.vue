@@ -12,10 +12,6 @@ const showSplash = computed<boolean>(() => {
   return route.path === "/course";
 });
 
-const lessonPath = (chapterSlug: string, lessonSlug: string) => {
-  return `/course/chapter/${chapterSlug}/lesson/${lessonSlug}`;
-};
-
 const isActiveLink = (lessonPath: string): boolean => {
   return lessonPath === route.fullPath;
 };
