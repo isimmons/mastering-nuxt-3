@@ -1,13 +1,20 @@
 <script setup lang="ts">
 import useLesson from "~/composables/useLesson";
 
+import { useCourseProgress } from "~/stores/courseProgress";
+
 import { assertIsSlugObject } from "~/utils";
 
+const user = useSupabaseUser();
 const course = await useCourse();
 const route = useRoute();
 assertIsSlugObject(route.params);
 const { chapterSlug, lessonSlug } = route.params;
 const lesson = await useLesson(chapterSlug, lessonSlug);
+const store = useCourseProgress();
+const { initialize, toggleComplete } = store;
+
+initialize();
 
 definePageMeta({
   middleware: [
@@ -46,6 +53,10 @@ definePageMeta({
   ],
 });
 
+const isCompleted = computed(() => {
+  return store.progress[chapterSlug][lessonSlug] || false;
+});
+
 const chapter = computed(() => {
   return course.value.chapters.find(
     (chapter) => chapter.slug === route.params.chapterSlug
@@ -60,29 +71,29 @@ useHead({
   title: pageTitle,
 });
 
-const progress = useLocalStorage<boolean[][]>("progress", []);
+// const progress = useLocalStorage<boolean[][]>("progress", []);
 
-const isLessonComplete = computed(() => {
-  if (chapter.value && lesson.value) {
-    if (!progress.value[chapter.value.number - 1]) {
-      return false;
-    }
-    if (!progress.value[chapter.value.number - 1][lesson.value.number - 1]) {
-      return false;
-    }
-    return progress.value[chapter.value.number - 1][lesson.value.number - 1];
-  }
-});
+// const isLessonComplete = computed(() => {
+//   if (chapter.value && lesson.value) {
+//     if (!progress.value[chapter.value.number - 1]) {
+//       return false;
+//     }
+//     if (!progress.value[chapter.value.number - 1][lesson.value.number - 1]) {
+//       return false;
+//     }
+//     return progress.value[chapter.value.number - 1][lesson.value.number - 1];
+//   }
+// });
 
-const toggleComplete = () => {
-  if (chapter.value && lesson.value) {
-    if (!progress.value[chapter.value.number - 1]) {
-      progress.value[chapter.value.number - 1] = [];
-    }
-    progress.value[chapter.value.number - 1][lesson.value.number - 1] =
-      !isLessonComplete.value;
-  }
-};
+// const toggleComplete = () => {
+//   if (chapter.value && lesson.value) {
+//     if (!progress.value[chapter.value.number - 1]) {
+//       progress.value[chapter.value.number - 1] = [];
+//     }
+//     progress.value[chapter.value.number - 1][lesson.value.number - 1] =
+//       !isLessonComplete.value;
+//   }
+// };
 </script>
 
 <template>
@@ -114,7 +125,8 @@ const toggleComplete = () => {
     />
     <p>{{ lesson.text }}</p>
     <LessonCompleteButton
-      :model-value="isLessonComplete"
+      v-if="user"
+      :model-value="isCompleted"
       @update:model-value="toggleComplete"
     />
   </div>
