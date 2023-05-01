@@ -11,10 +11,13 @@ const route = useRoute();
 assertIsSlugObject(route.params);
 const { chapterSlug, lessonSlug } = route.params;
 const lesson = await useLesson(chapterSlug, lessonSlug);
+
 const store = useCourseProgress();
 const { initialize, toggleComplete } = store;
 
-initialize();
+if (user.value) {
+  initialize();
+}
 
 definePageMeta({
   middleware: [
