@@ -53,8 +53,8 @@ definePageMeta({
   ],
 });
 
-const isCompleted = computed(() => {
-  return store.progress[chapterSlug][lessonSlug] || false;
+const isCompleted = computed<boolean>(() => {
+  return store.progress[chapterSlug]?.[lessonSlug] || false;
 });
 
 const chapter = computed(() => {
@@ -70,30 +70,6 @@ const pageTitle = computed(() => {
 useHead({
   title: pageTitle,
 });
-
-// const progress = useLocalStorage<boolean[][]>("progress", []);
-
-// const isLessonComplete = computed(() => {
-//   if (chapter.value && lesson.value) {
-//     if (!progress.value[chapter.value.number - 1]) {
-//       return false;
-//     }
-//     if (!progress.value[chapter.value.number - 1][lesson.value.number - 1]) {
-//       return false;
-//     }
-//     return progress.value[chapter.value.number - 1][lesson.value.number - 1];
-//   }
-// });
-
-// const toggleComplete = () => {
-//   if (chapter.value && lesson.value) {
-//     if (!progress.value[chapter.value.number - 1]) {
-//       progress.value[chapter.value.number - 1] = [];
-//     }
-//     progress.value[chapter.value.number - 1][lesson.value.number - 1] =
-//       !isLessonComplete.value;
-//   }
-// };
 </script>
 
 <template>
@@ -130,6 +106,5 @@ useHead({
       @update:model-value="toggleComplete"
     />
   </div>
-
   <div v-else><p>No content foo!</p></div>
 </template>
