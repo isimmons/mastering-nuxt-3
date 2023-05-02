@@ -2,6 +2,8 @@ declare global {
   type Maybe<T> = T | null | undefined;
 }
 
+declare module "vite-plugin-vsharp";
+
 declare module "*.jpg" {
   const path: string;
   export default path;
