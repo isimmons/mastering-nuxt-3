@@ -2,6 +2,8 @@
 import { courseProgress } from "~/stores/courseProgress";
 import { storeToRefs } from "pinia";
 
+import splash from "~/assets/images/splash.webp";
+
 const user = useSupabaseUser();
 const course = await useCourse();
 const route = useRoute();
@@ -79,7 +81,7 @@ const resetError = async (error: Ref<Error | null>) => {
         <div v-if="showSplash">
           <h2>Welcome to the course</h2>
           <div class="rounded-md overflow-hidden">
-            <img src="/splash.webp" alt="vueschool image" class="m-0" />
+            <img :src="splash" alt="vueschool image" class="m-0" />
           </div>
         </div>
         <div v-else>
