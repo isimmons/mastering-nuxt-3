@@ -1,15 +1,87 @@
 <script setup lang="ts">
-const course = await useCourse();
+import { loadStripe } from "@stripe/stripe-js";
 
-//temporarily get rid of ts compile error
-// fix later when hook up stripe
-const email = ref<string>("foos@foomail.com");
+import type { Stripe, StripeCardElement } from "@stripe/stripe-js";
+
+const course = await useCourse();
+const config = useRuntimeConfig();
+const stripe = ref<Stripe | null>(null);
+const card = ref<StripeCardElement | null>(null);
+const email = ref<string>("");
+const processingPayment = ref<boolean>(false);
+const success = ref<boolean>(false);
+
+const formStyle = {
+  base: {
+    fontSize: "16px",
+    color: "#3d4852",
+    "::placeholder": {
+      color: "#8795a1",
+    },
+  },
+};
+
+const elements = computed(() => stripe.value?.elements());
+
+const setupStripe = async () => {
+  // stripe.value = Stripe(config.public.stripeKey);
+  stripe.value = await loadStripe(config.public.stripeKey);
+
+  if (!card.value && elements.value) {
+    card.value = elements.value.create("card", {
+      style: formStyle,
+    });
+    card.value.mount("#card-element");
+  }
+};
+
+const handleSubmit = async () => {
+  if (!stripe.value || !card.value) return;
+  if (email.value === "") {
+    return;
+  }
+
+  processingPayment.value = true;
+  let secret;
+
+  try {
+    // Create a PaymentIntent with the order amount and currency set on the server end
+    const response = await $fetch("/api/stripe/paymentIntent", {
+      method: "POST",
+      body: {
+        email: email.value,
+      },
+    });
+    secret = response;
+  } catch (e) {
+    console.log(e);
+  }
+
+  try {
+    const response = await stripe.value.confirmCardPayment(secret, {
+      payment_method: {
+        card: card.value,
+      },
+      receipt_email: email.value,
+    });
+
+    if (response.paymentIntent?.status === "succeeded") {
+      success.value = true;
+    }
+  } catch (e) {
+    console.log(e);
+  } finally {
+    processingPayment.value = false;
+  }
+};
+
+setupStripe();
 </script>
 
 <template>
   <Modal @close="$emit('close')">
     <div class="bg-slate-200 p-8 rounded-xl w-full max-w-2xl">
-      <form>
+      <form @submit.prevent="handleSubmit">
         <h2 class="font-bold text-xl text-center">Buying {{ course.title }}</h2>
         <div class="mt-8 text-base width bg-white py-6 px-8 rounded shadow-md">
           <div class="w-full flex justify-between items-center mb-8">
@@ -22,6 +94,10 @@ const email = ref<string>("foos@foomail.com");
               placeholder="your@email.com"
               required
             />
+          </div>
+
+          <div id="card-element">
+            <!-- Elements will create input elements here -->
           </div>
         </div>
 
