@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { loadStripe } from "@stripe/stripe-js";
 
+import { assertNotNull } from "~/utils";
+
 import type { Stripe, StripeCardElement } from "@stripe/stripe-js";
 
 const course = await useCourse();
@@ -43,7 +45,7 @@ const handleSubmit = async () => {
   }
 
   processingPayment.value = true;
-  let secret;
+  let secret: string = "";
 
   try {
     // Create a PaymentIntent with the order amount and currency set on the server end
@@ -53,7 +55,8 @@ const handleSubmit = async () => {
         email: email.value,
       },
     });
-    secret = response;
+
+    secret = response || "";
   } catch (e) {
     console.log(e);
   }

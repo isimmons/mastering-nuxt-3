@@ -8,9 +8,11 @@ export default async (event: H3Event) => {
     });
   }
 
+  const cookie = getHeader(event, "cookie");
+  assertIsTypeString(cookie);
   const hasAccess = await $fetch("/api/user/hasAccess", {
     headers: {
-      cookie: getHeader(event, "cookie"),
+      cookie: cookie,
     },
   });
 
