@@ -1,26 +1,20 @@
 import { PrismaClient } from "@prisma/client";
+
+import { assertHasParam } from "~/utils";
+
 const prisma = new PrismaClient();
 
-type User = {
-  email: string;
-};
-
 export default defineEventHandler(async (event) => {
-  const user = event.context.user as User;
-
-  if (!user) {
-    return false;
-  }
+  assertHasParam(event.context.user, "email");
+  const { email } = event.context.user;
 
   const coursePurchases = await prisma.coursePurchase.findMany({
     where: {
-      userEmail: user.email,
+      userEmail: email,
       verified: true,
-      // Hard coded course ID
       courseId: 1,
     },
   });
 
-  // This user has purchased the course
   return coursePurchases.length > 0;
 });
