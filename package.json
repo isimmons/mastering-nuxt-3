@@ -27,6 +27,7 @@
     "nuxt": "^3.4.3",
     "pinia": "^2.0.35",
     "prisma": "^4.13.0",
+    "stripe-event-types": "^2.3.0",
     "ts-node": "^10.9.1",
     "tslib": "^2.5.0",
     "typescript": "^5.0.4",
