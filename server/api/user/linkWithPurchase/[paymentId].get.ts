@@ -1,11 +1,9 @@
 import { PrismaClient } from "@prisma/client";
 
-const prisma = new PrismaClient();
-import protectRoute from "~/server/utils/protectRoute";
 import { assertHasParam } from "~/utils";
-export default defineEventHandler(async (event) => {
-  protectRoute(event);
 
+const prisma = new PrismaClient();
+export default defineEventHandler(async (event) => {
   assertHasParam(event.context.params, "paymentId");
   const { paymentId } = event.context.params;
 
