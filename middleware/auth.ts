@@ -1,9 +1,17 @@
-export default defineNuxtRouteMiddleware(({ params, path }, from) => {
+export default defineNuxtRouteMiddleware(async (to) => {
   const user = useSupabaseUser();
+  const { data: hasAccess } = await useFetch("/api/user/hasAccess", {
+    headers: useRequestHeaders(["cookie"]),
+  });
 
-  if (user.value || params.chapterSlug === "1-chapter-1") {
+  if (hasAccess.value || to.params.chapterSlug === "1-chapter-1") {
     return;
+  } else if (user.value && !hasAccess.value) {
+    // Prevent logging in with Github if user has not purchased course
+    const client = useSupabaseClient();
+    await client.auth.signOut();
   }
+  console.log(to.path);
 
-  return navigateTo(`/login?redirectTo=${path}`);
+  return navigateTo(`/login?redirectTo=${to.path}`);
 });
