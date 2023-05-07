@@ -1,5 +1,7 @@
 import { H3Event } from "h3";
 
+import { assertIsTypeString } from "~/utils";
+
 export default async (event: H3Event) => {
   if (!event.context.user) {
     throw createError({
