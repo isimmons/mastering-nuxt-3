@@ -9,6 +9,7 @@ const stripe = ref<Stripe | null>(null);
 const card = ref<StripeCardElement | null>(null);
 const email = ref<string>("");
 const processingPayment = ref<boolean>(false);
+const paymentIntentId = ref<string | null>(null);
 const success = ref<boolean>(false);
 
 const formStyle = {
@@ -67,6 +68,7 @@ const handleSubmit = async () => {
 
     if (response.paymentIntent?.status === "succeeded") {
       success.value = true;
+      paymentIntentId.value = response.paymentIntent.id;
     }
   } catch (e) {
     console.log(e);
@@ -75,8 +77,13 @@ const handleSubmit = async () => {
   }
 };
 
-// temporary, not implemented yet
-const login = () => console.log("logging in");
+const login = async () => {
+  if (!paymentIntentId.value) return;
+
+  await navigateTo(
+    `/login?redirectTo=/linkWithPurchase/${paymentIntentId.value}`
+  );
+};
 
 setupStripe();
 </script>
